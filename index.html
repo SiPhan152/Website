@@ -30,7 +30,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://www.google.com">Truy cập Google</a>
     <p></p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/WgEY3Qu_akI?si=cGyft4TRmYZCL3D-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- <p>2.</p>
+ <p></p>
+    <form id="contactForm">
+  <input type="text" id="name" placeholder="Your Name" required />
+  <input type="email" id="email" placeholder="Your Email" required />
+  <textarea id="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Submit</button>
+</form>
+<p></p>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(event) {
+    // Ngừng sự kiện submit mặc định để xử lý dữ liệu trước
+    event.preventDefault();
+
+    // Lấy dữ liệu từ form
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+    // Đẩy dữ liệu vào dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      'event': 'formSubmission', // Tạo sự kiện 'formSubmission' để theo dõi
+      'formName': 'Contact Form', // Tên của form
+      'userName': name, // Dữ liệu của tên người dùng
+      'userEmail': email, // Dữ liệu của email người dùng
+      'userMessage': message // Dữ liệu của tin nhắn người dùng
+    });
+
+    // Xử lý form, ví dụ gửi dữ liệu hoặc chuyển hướng người dùng
+    // (Chẳng hạn như sử dụng AJAX để gửi dữ liệu mà không tải lại trang)
+    // Để giả lập, sau khi đẩy vào dataLayer, bạn có thể submit form thực sự
+    this.submit();
+  });
+</script>
+
+    <p>2.</p>
  <p>This is a simple website hosted on GitHub Pages.</p>
  <p>This is a simple website hosted on GitHub Pages.</p>
  <p>This is a simple website hosted on GitHub Pages.</p>
